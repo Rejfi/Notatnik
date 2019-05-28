@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">NoteKeeper</string>
+    <string name="title">Title</string>
+    <string name="message">Message</string>
+    <string name="text">Click here to take note&#8230;</string>
+    <string name="mojeNotatki">Moje notatki</string>
+    <string name="wazneNotatki">Ważne notatki</string>
+</resources>
