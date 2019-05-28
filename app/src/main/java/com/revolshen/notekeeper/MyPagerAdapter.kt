@@ -9,7 +9,7 @@ class MyPagerAdapter(fm: FragmentManager, private val numberOfFrag: Int): Fragme
     override fun getItem(position: Int): Fragment? {
         when(position){
                 0 -> return MainFragment()
-                1 -> return DetailFragment()
+                1 -> return ImportantNoteFragment()
         }
 
         return null

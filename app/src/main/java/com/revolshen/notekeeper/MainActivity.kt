@@ -1,6 +1,7 @@
 package com.revolshen.notekeeper
 
 import android.content.ContentValues
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -67,6 +68,13 @@ class MainActivity : AppCompatActivity() {
              }
 
          })
+
+        newNoteBT.setOnClickListener{
+            val intent = Intent(applicationContext, DetailsActivity::class.java)
+            startActivity(intent)
+        }
+
+
 
     }
 

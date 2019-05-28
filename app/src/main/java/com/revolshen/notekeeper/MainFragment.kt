@@ -23,7 +23,6 @@ class MainFragment: Fragment(){
         return inflater.inflate(R.layout.main_fragment, container, false)
     }
 
-
     override fun onResume() {
 
          val dbHelper = SQLDataBaseHelper(requireContext())

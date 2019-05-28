@@ -10,25 +10,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            >
+    >
 
     </com.google.android.material.tabs.TabLayout>
-
     <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent" android:layout_weight="2">
 
     </androidx.viewpager.widget.ViewPager>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:clickable="true"
-            app:srcCompat="@color/colorAccent"
-            android:id="@+id/floatingActionButton"
-            android:layout_weight="50"
-            android:focusable="true"/>
+    <TextView android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:textSize="24sp"
+              android:text="@string/text" android:layout_weight="13" android:textAlignment="center"
+              android:textStyle="bold|italic" android:id="@+id/newNoteBT"/>
 
 
 </LinearLayout>
