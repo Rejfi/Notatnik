@@ -5,4 +5,6 @@
     <string name="text">Click here to take note&#8230;</string>
     <string name="mojeNotatki">Moje notatki</string>
     <string name="wazneNotatki">Ważne notatki</string>
+    <string name="titleClick">Click here to set title&#8230;</string>
+
 </resources>

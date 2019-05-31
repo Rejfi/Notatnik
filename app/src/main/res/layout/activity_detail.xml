@@ -2,16 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+            style="@style/AppThemeActionBar"
+>
 
-    <EditText
+    <LinearLayout
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:id="@+id/title_detail"
-            android:inputType="textLongMessage" android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:background="@android:color/transparent" android:hint="Click here to set title..."
-            android:layout_margin="5dp"/>
+            android:layout_height="wrap_content">
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:id="@+id/title_detail"
+                android:inputType="textLongMessage" android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:background="@android:color/transparent"
+                android:hint="@string/titleClick"
+                android:layout_margin="10dp"
+                android:autofillHints=""/>
+    </LinearLayout>
     <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -19,6 +28,10 @@
             android:ems="10"
             android:id="@+id/message_detail"
             style="@style/Widget.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
-            android:background="@android:color/transparent" android:gravity="start" android:hint="@string/text"
-            android:padding="10dp" android:layout_margin="10dp"/>
+            android:background="@android:color/transparent"
+            android:gravity="start"
+            android:hint="@string/text"
+            android:padding="10dp"
+            android:layout_margin="10dp"
+            android:autofillHints=""/>
 </LinearLayout>

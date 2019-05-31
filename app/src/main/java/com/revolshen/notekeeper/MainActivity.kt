@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
          val viewPager: ViewPager
-         val pagerAdapter: FragmentPagerAdapter
+         val pagerAdapter: FragmentStatePagerAdapter
          val tabLayout: TabLayout
 
         viewPager = findViewById(R.id.viewPager)
@@ -35,33 +35,17 @@ class MainActivity : AppCompatActivity() {
 
         tabLayout.addTab(tab1)
         tabLayout.addTab(tab2)
-
+        tabLayout.setupWithViewPager(viewPager)
 
         pagerAdapter = MyPagerAdapter(supportFragmentManager, 2)
 
         viewPager.adapter = pagerAdapter
 
-        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener{
-            override fun onPageScrollStateChanged(state: Int) {
-            }
 
-            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
-
-            }
-
-            override fun onPageSelected(position: Int) {
-
-            }
-
-        })
          tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
-             override fun onTabReselected(p0: TabLayout.Tab?) {
+             override fun onTabReselected(p0: TabLayout.Tab?) {}
 
-             }
-
-             override fun onTabUnselected(p0: TabLayout.Tab?) {
-
-             }
+             override fun onTabUnselected(p0: TabLayout.Tab?) {}
 
              override fun onTabSelected(p0: TabLayout.Tab?) {
                  viewPager.setCurrentItem(p0!!.position)
@@ -78,20 +62,6 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    override fun onStart() {
-
-        //Put the test data to database
-        val dbHelper = SQLDataBaseHelper(applicationContext)
-        val db = dbHelper.writableDatabase
-        val value = ContentValues().apply {
-            put(TableInfo.COLUMN_NAME_TITLE, "TEST TITLE")
-            put(TableInfo.COLUMN_NAME_MESSAGE, "TEST MESSAGE")
-        }
-        db.insertOrThrow(TableInfo.TABLE_NAME, null, value)
-
-
-        super.onStart()
-    }
 
 
 }

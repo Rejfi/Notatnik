@@ -25,17 +25,31 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textSize="22sp"
-                    android:ems="10"
-                    android:id="@+id/title_cardView"
-                    android:hint="@string/title"
-                    android:ellipsize="end"
-                    android:lines="1"
-                    android:padding="5dp"/>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                        android:orientation="horizontal"
+            >
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:textSize="22sp"
+                        android:ems="10"
+                        android:id="@+id/title_cardView"
+                        android:hint="@string/title"
+                        android:ellipsize="end"
+                        android:lines="1"
+                        android:padding="5dp" android:layout_weight="1"/>
+
+                <ImageView android:layout_width="20dp"
+                           android:layout_height="20dp" android:id="@+id/importantIcon"
+                           app:srcCompat="@mipmap/ic_launcher" android:visibility="invisible"/>
+
+            </LinearLayout>
+
+
+
+
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -59,6 +73,8 @@
                     android:padding="5dp"
                     android:hint="Date..."
             />
+
+
 
         </LinearLayout>
 

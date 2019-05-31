@@ -13,6 +13,7 @@ object TableInfo : BaseColumns {
     const val COLUMN_NAME_TITLE = "title"
     const val COLUMN_NAME_MESSAGE = "message"
     const val COLUMN_NAME_DATE = "date"
+    const val COLUMN_NAME_IMPORTANT = "important"
 }
 /*
 Podstawowe komendy MySQL do zarządzania bazą danych
@@ -25,7 +26,8 @@ object BasicComannd {
                 "${BaseColumns._ID} INTEGER PRIMARY KEY," +
                 "${TableInfo.COLUMN_NAME_TITLE} TEXT NOT NULL," +
                 "${TableInfo.COLUMN_NAME_MESSAGE} TEXT NOT NULL, " +
-                "${TableInfo.COLUMN_NAME_DATE} TEXT)"
+                "${TableInfo.COLUMN_NAME_DATE} TEXT," +
+                "${TableInfo.COLUMN_NAME_IMPORTANT} INTEGER)"
 
     const val SQL_DELETE_TABLE = "DROP TABLE IF EXISTS ${TableInfo.TABLE_NAME}"
 

@@ -12,7 +12,6 @@ import kotlinx.android.synthetic.main.note_view.view.*
 
 class CardViewAdapter(val notes: ArrayList<Note>): RecyclerView.Adapter<MyViewHolder>(){
 
-
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(p0.context)
         val cardView_note = layoutInflater.inflate(R.layout.note_view, p0, false)
@@ -20,7 +19,6 @@ class CardViewAdapter(val notes: ArrayList<Note>): RecyclerView.Adapter<MyViewHo
 
     }
     override fun getItemCount(): Int {
-
         return notes.size
     }
 
@@ -53,8 +51,12 @@ class CardViewAdapter(val notes: ArrayList<Note>): RecyclerView.Adapter<MyViewHo
         })
 
         note_cardView.setOnClickListener{
-
-
+                val intent = Intent(holder.view.context, DetailsActivity::class.java)
+                intent.apply {
+                    putExtra("title", title.text)
+                    putExtra("message", message.text)
+                }
+                holder.view.context.startActivity(intent)
         }
 
     }
