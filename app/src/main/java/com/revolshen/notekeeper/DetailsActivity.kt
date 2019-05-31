@@ -68,6 +68,8 @@ class DetailsActivity: AppCompatActivity() {
 
         return super.onOptionsItemSelected(item)
 
+
+        TODO("Create feature can mark a notes as important and put it into database")
     }
 
 }

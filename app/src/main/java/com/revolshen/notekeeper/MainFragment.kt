@@ -27,7 +27,7 @@ class MainFragment: Fragment(){
         val dbHelper = SQLDataBaseHelper(requireContext())
         val db = dbHelper.writableDatabase
 
-        //Downloading data from database
+        //Receive data from database
         val cursor = db.query(TableInfo.TABLE_NAME, null, null,
             null, null, null, null)
 
@@ -35,7 +35,7 @@ class MainFragment: Fragment(){
 
         val notes = ArrayList<Note>()
         while(!cursor.isAfterLast){
-            var note = Note()
+            val note = Note()
             note.title = cursor.getString(cursor.getColumnIndex(TableInfo.COLUMN_NAME_TITLE))
             note.message = cursor.getString(cursor.getColumnIndex(TableInfo.COLUMN_NAME_MESSAGE))
             // note.date = cursor.getString(cursor.getColumnIndex(TableInfo.COLUMN_NAME_DATE))
@@ -44,6 +44,7 @@ class MainFragment: Fragment(){
             cursor.moveToNext()
         }
 
+        //Close cursor and database
         cursor.close()
         db.close()
 
@@ -53,38 +54,5 @@ class MainFragment: Fragment(){
 
 
     }
-
-    /*
-    override fun onResume() {
-
-         val dbHelper = SQLDataBaseHelper(requireContext())
-         val db = dbHelper.writableDatabase
-
-        //Downloading data from database
-        val cursor = db.query(TableInfo.TABLE_NAME, null, null,
-            null, null, null, null)
-
-        cursor.moveToFirst()
-        while(!cursor.isAfterLast){
-            val note = Note()
-                 note.title = cursor.getString(cursor.getColumnIndex(TableInfo.COLUMN_NAME_TITLE))
-                 note.message = cursor.getString(cursor.getColumnIndex(TableInfo.COLUMN_NAME_MESSAGE))
-                // note.date = cursor.getString(cursor.getColumnIndex(TableInfo.COLUMN_NAME_DATE))
-                 note.id = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID))
-            notes.add(note)
-            cursor.moveToNext()
-        }
-        cursor.close()
-
-        //Set adapter and layout for recyclerView
-        recycler_view.layoutManager = GridLayoutManager(requireContext(),2)
-        recycler_view.adapter = CardViewAdapter(notes)
-
-        db.close()
-
-        super.onResume()
-
-    }
-        */
 
 }

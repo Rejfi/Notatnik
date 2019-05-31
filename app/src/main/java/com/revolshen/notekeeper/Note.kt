@@ -1,9 +1,8 @@
 package com.revolshen.notekeeper
 
-//Reprezentacja pojedynczej notatki
+//Class represents note
 
-
-class Note {
+class Note{
     var id: Int = -1
     var title: String = ""
     var message: String = ""

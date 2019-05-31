@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
 
         viewPager.adapter = pagerAdapter
 
-
          tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
              override fun onTabReselected(p0: TabLayout.Tab?) {}
 
@@ -57,11 +56,5 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(applicationContext, DetailsActivity::class.java)
             startActivity(intent)
         }
-
-
-
     }
-
-
-
 }

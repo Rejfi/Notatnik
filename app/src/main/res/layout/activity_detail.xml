@@ -3,8 +3,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
-            style="@style/AppThemeActionBar"
->
+            style="@style/AppThemeActionBar">
 
     <LinearLayout
             android:orientation="horizontal"
@@ -15,7 +14,8 @@
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:id="@+id/title_detail"
-                android:inputType="textLongMessage" android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                android:inputType="textLongMessage"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
                 android:background="@android:color/transparent"
                 android:hint="@string/titleClick"
                 android:layout_margin="10dp"
