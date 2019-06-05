@@ -17,7 +17,16 @@ class DetailsActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
 
+        //If intent has EDIT_CODE load data from EXTRAS
+        if(intent.hasExtra(CardViewAdapter.EDIT_CODE)){
+            title_detail.setText(intent.getStringExtra(CardViewAdapter.TITIE_CODE))
+            message_detail.setText(intent.getStringExtra(CardViewAdapter.MESSAGE_CODE))
+        }
+
     }
+
+
+
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.save_menu, menu)

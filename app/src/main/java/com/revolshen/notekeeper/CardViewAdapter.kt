@@ -11,6 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.note_view.view.*
 
 class CardViewAdapter(val notes: ArrayList<Note>): RecyclerView.Adapter<MyViewHolder>(){
+    companion object{
+        val EDIT_CODE = "EDIT_CODE"
+        val TITIE_CODE = "TITLE_CODE"
+        val MESSAGE_CODE = "MESSAGE_CODE"
+    }
+
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): MyViewHolder {
         val layoutInflater = LayoutInflater.from(p0.context)
@@ -53,10 +59,12 @@ class CardViewAdapter(val notes: ArrayList<Note>): RecyclerView.Adapter<MyViewHo
         note_cardView.setOnClickListener{
                 val intent = Intent(holder.view.context, DetailsActivity::class.java)
                 intent.apply {
-                    putExtra("title", title.text)
-                    putExtra("message", message.text)
+                    putExtra(EDIT_CODE, EDIT_CODE)
+                    putExtra(TITIE_CODE, title.text)
+                    putExtra(MESSAGE_CODE, message.text)
                 }
                 holder.view.context.startActivity(intent)
+
         }
 
     }

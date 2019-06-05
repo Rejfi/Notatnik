@@ -34,13 +34,18 @@ class MainFragment: Fragment(){
         cursor.moveToFirst()
 
         val notes = ArrayList<Note>()
+        val importantNotes = ArrayList<Note>()
         while(!cursor.isAfterLast){
             val note = Note()
             note.title = cursor.getString(cursor.getColumnIndex(TableInfo.COLUMN_NAME_TITLE))
             note.message = cursor.getString(cursor.getColumnIndex(TableInfo.COLUMN_NAME_MESSAGE))
             // note.date = cursor.getString(cursor.getColumnIndex(TableInfo.COLUMN_NAME_DATE))
             note.id = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID))
+            if(note.important == 1){
+                importantNotes.add(note)
+            }
             notes.add(note)
+
             cursor.moveToNext()
         }
 

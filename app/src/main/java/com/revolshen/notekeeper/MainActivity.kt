@@ -15,42 +15,24 @@ import kotlinx.android.synthetic.main.main_fragment.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var viewPager: ViewPager
+    private lateinit var pagerAdapter: FragmentStatePagerAdapter
+    private lateinit var tabLayout: TabLayout
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-         val viewPager: ViewPager
-         val pagerAdapter: FragmentStatePagerAdapter
-         val tabLayout: TabLayout
+        pagerAdapter = MyPagerAdapter(supportFragmentManager, 2)
 
         viewPager = findViewById(R.id.viewPager)
+        viewPager.adapter = pagerAdapter
 
         tabLayout = findViewById(R.id.tabLayout)
         tabLayout.tabGravity = TabLayout.GRAVITY_FILL
+        tabLayout.setupWithViewPager(viewPager, true)
 
-        val tab1 = tabLayout.newTab()
-        val tab2 = tabLayout.newTab()
-        tab1.setText(R.string.mojeNotatki)
-        tab2.setText(R.string.wazneNotatki)
 
-        tabLayout.addTab(tab1)
-        tabLayout.addTab(tab2)
-        tabLayout.setupWithViewPager(viewPager)
-
-        pagerAdapter = MyPagerAdapter(supportFragmentManager, 2)
-
-        viewPager.adapter = pagerAdapter
-
-         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener{
-             override fun onTabReselected(p0: TabLayout.Tab?) {}
-
-             override fun onTabUnselected(p0: TabLayout.Tab?) {}
-
-             override fun onTabSelected(p0: TabLayout.Tab?) {
-                 viewPager.setCurrentItem(p0!!.position)
-             }
-
-         })
 
         newNoteBT.setOnClickListener{
             val intent = Intent(applicationContext, DetailsActivity::class.java)
