@@ -1,5 +1,6 @@
 package com.revolshen.notekeeper
 
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
@@ -7,6 +8,7 @@ import android.provider.BaseColumns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.note_view.view.*
 
@@ -34,6 +36,7 @@ class CardViewAdapter(val notes: ArrayList<Note>): RecyclerView.Adapter<MyViewHo
             val message = holder.view.message_cardView
             val date = holder.view.date_note
             val note_cardView = holder.view.note_cardView
+            val importantButton = holder.view.importantIcon
 
         //Set the date from notes
             title.setText(notes[holder.adapterPosition].title)
@@ -52,6 +55,7 @@ class CardViewAdapter(val notes: ArrayList<Note>): RecyclerView.Adapter<MyViewHo
                 notes.removeAt(holder.adapterPosition)
                 notifyItemRemoved(holder.adapterPosition)
 
+                db.close()
                 return true
             }
         })
@@ -64,7 +68,16 @@ class CardViewAdapter(val notes: ArrayList<Note>): RecyclerView.Adapter<MyViewHo
                     putExtra(MESSAGE_CODE, message.text)
                 }
                 holder.view.context.startActivity(intent)
+        }
 
+        importantButton.setOnClickListener {
+            val dbHelper = SQLDataBaseHelper(holder.view.context)
+            val db = dbHelper.writableDatabase
+            val values = ContentValues()
+            values.put(TableInfo.COLUMN_NAME_IMPORTANT, 1)
+
+            db.update(TableInfo.TABLE_NAME,values, BaseColumns._ID + "=?", arrayOf(holder.adapterPosition.toString()))
+            db.close()
         }
 
     }

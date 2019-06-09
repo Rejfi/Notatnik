@@ -28,4 +28,5 @@ class MyPagerAdapter(fm: FragmentManager, private val numberOfFrag: Int): Fragme
 
         return super.getPageTitle(position)
     }
+
 }

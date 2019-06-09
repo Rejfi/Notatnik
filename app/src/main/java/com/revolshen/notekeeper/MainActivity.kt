@@ -35,6 +35,18 @@ class MainActivity : AppCompatActivity() {
 
 
         newNoteBT.setOnClickListener{
+
+            val values = ContentValues()
+            values.apply {
+                put(TableInfo.COLUMN_NAME_IMPORTANT, 1)
+                put(TableInfo.COLUMN_NAME_MESSAGE, "Ważne notatka")
+                put(TableInfo.COLUMN_NAME_TITLE, "Ważna notatka")
+
+                val dbHelper = SQLDataBaseHelper(applicationContext)
+                val db = dbHelper.writableDatabase
+                db.insertOrThrow(TableInfo.TABLE_NAME,null, values)
+                }
+
             val intent = Intent(applicationContext, DetailsActivity::class.java)
             startActivity(intent)
         }
