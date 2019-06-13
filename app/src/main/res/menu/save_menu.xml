@@ -2,17 +2,8 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-            android:id="@+id/importantBT"
-            android:icon="@drawable/round_favorite_border_black_18dp"
-            android:title="important"
-            app:showAsAction="ifRoom"/>
-
     <item android:id="@+id/saveBT_details"
           android:title="Save"
           app:showAsAction="ifRoom"/>
-
-
-
 
 </menu>

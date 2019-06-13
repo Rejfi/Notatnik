@@ -1,14 +1,17 @@
-package com.revolshen.notekeeper
+package com.revolshen.notekeeper.Classes
 
 import android.content.ContentValues
-import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.revolshen.notekeeper.Adapters.CardViewAdapter
+import com.revolshen.notekeeper.R
+import com.revolshen.notekeeper.SQLDataBaseHelper
+import com.revolshen.notekeeper.TableInfo
 import kotlinx.android.synthetic.main.activity_detail.*
-import org.xmlpull.v1.XmlPullParser
+import java.text.DateFormat
+import java.util.*
 
 class DetailsActivity: AppCompatActivity() {
 
@@ -22,11 +25,7 @@ class DetailsActivity: AppCompatActivity() {
             title_detail.setText(intent.getStringExtra(CardViewAdapter.TITIE_CODE))
             message_detail.setText(intent.getStringExtra(CardViewAdapter.MESSAGE_CODE))
         }
-
     }
-
-
-
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.save_menu, menu)
@@ -45,40 +44,26 @@ class DetailsActivity: AppCompatActivity() {
             val message = message_detail.text.toString()
 
 
-
             //Check title and message. If they are both empty don't create new note
             if (!(title.isNullOrEmpty() && message.isNullOrEmpty())) {
 
+                val time = Calendar.getInstance().time.time
+                val currentDate = DateFormat.getDateInstance().format(time)
+
                 value.put(TableInfo.COLUMN_NAME_TITLE, title)
                 value.put(TableInfo.COLUMN_NAME_MESSAGE, message)
+                value.put(TableInfo.COLUMN_NAME_DATE, currentDate)
                 if(item.isChecked) value.put(TableInfo.COLUMN_NAME_IMPORTANT,1)
                 else value.put(TableInfo.COLUMN_NAME_IMPORTANT,0)
-
 
                 db.insertOrThrow(TableInfo.TABLE_NAME, null, value)
                 onBackPressed()
 
             }
             else onBackPressed()
-
         }
-            if(item!!.itemId == R.id.importantBT){
-
-                if(!item.isChecked)    {
-                    item.setIcon(R.drawable.round_favorite_black_18dp)
-                    item.setChecked(true)
-                }
-
-                else{
-                    item.setIcon(R.drawable.round_favorite_border_black_18dp)
-                    item.setChecked(false)
-                }
-            }
-
         return super.onOptionsItemSelected(item)
 
-
-        TODO("Create feature can mark a notes as important and put it into database")
     }
 
 }

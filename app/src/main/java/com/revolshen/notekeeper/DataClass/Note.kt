@@ -1,4 +1,4 @@
-package com.revolshen.notekeeper
+package com.revolshen.notekeeper.DataClass
 
 //Class represents note
 

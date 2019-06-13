@@ -1,18 +1,16 @@
-package com.revolshen.notekeeper
+package com.revolshen.notekeeper.Fragments
 
-import android.os.AsyncTask
 import android.os.Bundle
 import android.provider.BaseColumns
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.GridLayoutManager
-import kotlinx.android.synthetic.main.activity_main.*
+import com.revolshen.notekeeper.*
+import com.revolshen.notekeeper.Adapters.CardViewAdapter
+import com.revolshen.notekeeper.DataClass.Note
 import kotlinx.android.synthetic.main.main_fragment.*
-import java.util.function.UnaryOperator
 
 
 class MainFragment: Fragment(){
@@ -28,27 +26,24 @@ class MainFragment: Fragment(){
         val db = dbHelper.writableDatabase
 
         //Receive data from database
-        val cursor = db.query(TableInfo.TABLE_NAME, null, null,
+        val cursor = db.query(
+            TableInfo.TABLE_NAME, null, null,
             null, null, null, null)
 
         cursor.moveToFirst()
 
         val notes = ArrayList<Note>()
-        val importantNotes = ArrayList<Note>()
         while(!cursor.isAfterLast){
             val note = Note()
             note.title = cursor.getString(cursor.getColumnIndex(TableInfo.COLUMN_NAME_TITLE))
             note.message = cursor.getString(cursor.getColumnIndex(TableInfo.COLUMN_NAME_MESSAGE))
-            // note.date = cursor.getString(cursor.getColumnIndex(TableInfo.COLUMN_NAME_DATE))
+            note.date = cursor.getString(cursor.getColumnIndex(TableInfo.COLUMN_NAME_DATE))
             note.id = cursor.getInt(cursor.getColumnIndex(BaseColumns._ID))
-            if(note.important == 1){
-                importantNotes.add(note)
-            }
+
             notes.add(note)
 
             cursor.moveToNext()
         }
-
         //Close cursor and database
         cursor.close()
         db.close()
