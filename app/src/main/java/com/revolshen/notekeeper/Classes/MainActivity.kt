@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         pagerAdapter = MyPagerAdapter(supportFragmentManager, 1)
 
         viewPager = findViewById(R.id.viewPager)
@@ -33,7 +32,6 @@ class MainActivity : AppCompatActivity() {
         tabLayout.setupWithViewPager(viewPager, false)
 
 
-        //Create new note after click textView
         newNoteBT.setOnClickListener {
             val intent = Intent(applicationContext, DetailsActivity::class.java)
             startActivity(intent)

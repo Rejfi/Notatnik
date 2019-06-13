@@ -22,16 +22,17 @@
             android:layout_height="match_parent"
             android:layout_weight="2"
             android:layout_marginBottom="10dp"/>
-
-
-    <TextView android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:textSize="24sp"
-              android:text="@string/text"
-              android:layout_weight="12"
-              android:textStyle="bold|italic"
-              android:id="@+id/newNoteBT"
-              android:textAlignment="center"/>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            app:srcCompat="@drawable/icon_new_note"
+            android:id="@+id/newNoteBT"
+            android:focusable="true"
+            android:layout_gravity="end"
+            android:layout_marginBottom="20dp"
+            android:layout_marginEnd="25dp"
+    />
 
 
 </LinearLayout>
